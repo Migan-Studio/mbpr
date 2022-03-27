@@ -13,13 +13,17 @@ import { config } from 'dotenv'
 /**
  * @property {string} description
  * @property {ApplicationCommandType | undefined} type
- * @property {ApplicationCommandOptionData[]} options
- * @property {boolean} defaultPermission
+ * @property {ApplicationCommandOptionData[] | undefined} options
+ * @property {boolean | undefined} defaultPermission
  * @property {string} name
  */
 export class Command {
-  constructor(option = {}) {
-    const { name, description, defaultPermission, type, options } = option
+  constructor() {
+    this.name = ''
+    this.description = ''
+    this.defaultPermission = undefined
+    this.type = 'CHAT_INPUT'
+    this.options = []
   }
 
   /**
@@ -32,30 +36,30 @@ export class Command {
 export class mbprClient extends Client {
   constructor() {
     super({
-      intents: [Intents.FLAGS.GUILDS],
+      intents: [Intents.FLAGS.GUILDS, ],
     })
     this._commands = new Collection()
+    this._commandDirectory = path.join(__dirname, '..', 'Commands')
   }
 
   /**
    * @private
    */
   _loadCommands() {
-    const Directory = readdirSync(path.join(__dirname, '..', 'Commands'))
-
-    for (const Folders of Directory) {
-      const FolderDirectory = readdirSync(`${__dirname}/../Commands/${Folders}`)
-      for (const Files of FolderDirectory) {
-        let Command = require(`${__dirname}/../Commands/${Folders}/${Files}`)
-        Command = new Command()
-        this._commands.set(Command.name, Command)
+    const Directory = readdirSync(path.join(this._commandDirectory))
+    for (const Folder of Directory) {
+      const Dir2 = readdirSync(`${this._commandDirectory}/${Folder}`)
+      for (const File of Dir2) {
+        const Temp = require(`${this._commandDirectory}/${Folder}/${File}`)
+        const modules = new Temp()
+        this._commands.set(modules.name, modules)
         this.once('ready', () => {
-          this.application.commands.create({
-            name: Command.name,
-            description: Command.description,
-            type: Command.type,
-            options: Command.options,
-            defaultPermission: Command.defaultPermission,
+          this.application?.commands.create({
+            name: modules.name,
+            description: modules.description,
+            type: modules.type,
+            options: modules.options,
+            defaultPermission: modules.defaultPermission,
           })
         })
       }
@@ -70,13 +74,13 @@ export class mbprClient extends Client {
       console.log('-------------------------')
     })
      this._loadCommands()
-     this.on('interactionCreate', async interaction => {
+     this.on('interactionCreate', interaction => {
       if (interaction.isCommand()) {
         const Command = this._commands.get(interaction.commandName)
 
         if (!Command) return
 
-        await Command.execute(interaction)
+        Command.execute(interaction)
       }
     })
   }
