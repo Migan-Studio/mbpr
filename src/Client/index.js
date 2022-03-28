@@ -36,7 +36,7 @@ export class Command {
 export class mbprClient extends Client {
   constructor() {
     super({
-      intents: [Intents.FLAGS.GUILDS, ],
+      intents: [Intents.FLAGS.GUILDS],
     })
     this._commands = new Collection()
     this._commandDirectory = path.join(__dirname, '..', 'Commands')
@@ -67,14 +67,14 @@ export class mbprClient extends Client {
   }
 
   start() {
-     config()
-     this.login(process.env.TOKEN)
-     this.on('ready', () => {
+    config()
+    this.login(process.env.TOKEN)
+    this.on('ready', () => {
       console.log(`[Client] ${this.user.username}`)
       console.log('-------------------------')
     })
-     this._loadCommands()
-     this.on('interactionCreate', interaction => {
+    this._loadCommands()
+    this.on('interactionCreate', interaction => {
       if (interaction.isCommand()) {
         const Command = this._commands.get(interaction.commandName)
 
