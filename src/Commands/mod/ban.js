@@ -49,7 +49,7 @@ module.exports = class extends Command {
         embeds: [
           new MessageEmbed()
             .setTitle('Ban')
-            .setDescription(`Member ${member.user.tag}`)
+            .setDescription(`Member ${member.user.tag} has been baned.`)
             .setTimestamp(),
         ],
       })

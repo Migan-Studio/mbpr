@@ -47,7 +47,7 @@ module.exports = class extends Command {
         embeds: [
           new MessageEmbed()
             .setTitle('Kick')
-            .setDescription(`Member ${member.user.tag}`)
+            .setDescription(`Member ${member.user.tag} has been kicked.`)
             .setTimestamp(),
         ],
       })
