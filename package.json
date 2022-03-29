@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "main": "dist/index.js",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0"
