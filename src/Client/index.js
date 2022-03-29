@@ -1,22 +1,8 @@
-import {
-  Client,
-  Collection,
-  Intents,
-  CommandInteraction,
-  ApplicationCommandType,
-  ApplicationCommandOptionData,
-} from 'discord.js'
+import { Client, Collection, Intents } from 'discord.js'
 import { readdirSync } from 'fs'
 import path from 'path'
 import { config } from 'dotenv'
 
-/**
- * @property {string} description
- * @property {ApplicationCommandType | undefined} type
- * @property {ApplicationCommandOptionData[] | undefined} options
- * @property {boolean | undefined} defaultPermission
- * @property {string} name
- */
 export class Command {
   constructor() {
     this.name = ''
@@ -26,10 +12,6 @@ export class Command {
     this.options = []
   }
 
-  /**
-   *
-   * @param interaction {CommandInteraction}
-   */
   execute(interaction) {}
 }
 
@@ -73,6 +55,7 @@ export class mbprClient extends Client {
       console.log(`[Client] ${this.user.username}`)
       console.log('-------------------------')
     })
+    process.on('uncaughtException', console.error)
     this._loadCommands()
     this.on('interactionCreate', interaction => {
       if (interaction.isCommand()) {

@@ -17,7 +17,11 @@ module.exports = class extends Command {
             Formatters.codeBlock(
               'md',
               `# info
-help`
+- help
+
+# mod
+- kick
+- ban`
             )
           ),
       ],
