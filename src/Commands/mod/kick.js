@@ -35,10 +35,12 @@ module.exports = class extends Command {
     )
       return interaction.reply({
         content: 'You not have permissions has `Kick Members`.',
+        ephemeral: true,
       })
     if (!interaction.guild.me.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
       return interaction.reply({
         content: "i'm not have permissions has `Kick Members`.",
+        ephemeral: true,
       })
 
     try {
