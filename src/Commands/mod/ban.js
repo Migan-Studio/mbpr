@@ -31,13 +31,13 @@ module.exports = class extends Command {
     if (
       !interaction.guild.members.cache
         .get(interaction.user.id)
-        .permissions.has(Permissions.FLAGS.KICK_MEMBERS)
+        .permissions.has(Permissions.FLAGS.BAN_MEMBERS)
     )
       return interaction.reply({
         content: 'You not have permissions has `Ban Members`.',
         ephemeral: true,
       })
-    if (!interaction.guild.me.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
+    if (!interaction.guild.me.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
       return interaction.reply({
         content: "i'm not have permissions has `Ban Members`.",
         ephemeral: true,
