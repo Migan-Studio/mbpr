@@ -21,7 +21,8 @@ module.exports = class extends Command {
 
 # mod
 - kick
-- ban`
+- ban
+- clean`
             )
           ),
       ],

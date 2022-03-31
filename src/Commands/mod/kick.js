@@ -52,6 +52,7 @@ module.exports = class extends Command {
             .setDescription(`Member ${member.user.tag} has been kicked.`)
             .setTimestamp(),
         ],
+        ephemeral: true,
       })
     } catch (error) {
       console.log(error)
