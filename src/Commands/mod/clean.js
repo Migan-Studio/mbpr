@@ -61,6 +61,7 @@ module.exports = class extends Command {
                   )} chat(s) have been deleted.`
                 ),
             ],
+            ephemeral: true,
           })
         })
       })

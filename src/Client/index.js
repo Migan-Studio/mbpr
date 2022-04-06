@@ -55,7 +55,6 @@ export class mbprClient extends Client {
       console.log(`[Client] ${this.user.username}`)
       console.log('-------------------------')
     })
-    process.on('uncaughtException', console.error)
     this._loadCommands()
     this.on('interactionCreate', interaction => {
       if (interaction.isCommand()) {
