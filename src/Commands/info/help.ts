@@ -1,18 +1,15 @@
 import { Command } from '../../Client'
-import { Formatters, MessageEmbed } from 'discord.js'
+import { Formatters, CommandInteraction, MessageEmbed } from 'discord.js'
 
-module.exports = class extends Command {
-  constructor() {
-    super()
-    this.name = 'help'
-    this.description = "mbpr project's Help"
-  }
+export = class extends Command {
+  name = 'help'
+  description = "mbpr project's Help"
 
-  execute(interaction) {
+  execute(interaction: CommandInteraction) {
     interaction.reply({
       embeds: [
         new MessageEmbed()
-          .setTitle(`${interaction.client.user.username}'s Help`)
+          .setTitle(`${interaction.client.user!.username}'s Help`)
           .setDescription(
             Formatters.codeBlock(
               'md',
