@@ -1,43 +1,46 @@
 import { Command } from '../../Client'
-import { MessageEmbed, Permissions } from 'discord.js'
+import {
+  MessageEmbed,
+  Permissions,
+  CommandInteraction,
+  ApplicationCommandOptionData,
+  GuildMember,
+} from 'discord.js'
 
 module.exports = class extends Command {
-  constructor() {
-    super()
-    this.name = 'kick'
-    this.description = "mbpr project's Kick"
-    this.options = [
-      {
-        type: 'USER',
-        name: 'member',
-        description: 'member',
-        required: true,
-      },
-      {
-        type: 'STRING',
-        name: 'reason',
-        description: 'kick reason',
-        required: false,
-      },
-    ]
-  }
-  execute(interaction) {
-    let member = interaction.options.getMember('member')
-    if (interaction.channel.type === 'DM')
+  name = 'kick'
+  description = "mbpr project's Kick"
+  options: ApplicationCommandOptionData[] = [
+    {
+      type: 'USER',
+      name: 'member',
+      description: 'member',
+      required: true,
+    },
+    {
+      type: 'STRING',
+      name: 'reason',
+      description: 'kick reason',
+      required: false,
+    },
+  ]
+  execute(interaction: CommandInteraction) {
+    let member = interaction.options.getMember('member') as GuildMember
+    if (interaction.channel!.type === 'DM')
       return interaction.reply({
         content: "Can't Using the DM.",
         ephemeral: true,
       })
     if (
-      !interaction.guild.members.cache
-        .get(interaction.user.id)
+      !interaction
+        .guild!.members!.cache!.get(interaction.user.id)!
         .permissions.has(Permissions.FLAGS.KICK_MEMBERS)
     )
       return interaction.reply({
         content: 'You not have permissions has `Kick Members`.',
         ephemeral: true,
       })
-    if (!interaction.guild.me.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
+    if (!interaction.guild!.me!.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
       return interaction.reply({
         content: "i'm not have permissions has `Kick Members`.",
         ephemeral: true,

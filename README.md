@@ -4,7 +4,7 @@
 
 ## Using
 
-- **this project is use licence bt `MIT`**
+- **this project is use licence at `MIT`**
 - **You need node.js 16.6.0 or higher and yarn**
 
 1. Clone the project.
@@ -15,13 +15,14 @@ yarn install
 ```
 
 3. copy a `.env` the `example.env`
-4. run
+4. insert Your Bot Token of `TOKEN` value
+5. run
 
 ```sh
-# no compile
+# no build
 yarn dev
 
-# compile
+# build then run
 yarn build
 yarn start
 ```

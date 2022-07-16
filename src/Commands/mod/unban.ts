@@ -1,42 +1,46 @@
-import { MessageEmbed, Permissions } from 'discord.js'
+import {
+  ApplicationCommandOptionData,
+  CommandInteraction,
+  MessageEmbed,
+  Permissions,
+  Snowflake,
+} from 'discord.js'
 import { Command } from '../../Client'
 
 module.exports = class extends Command {
-  constructor() {
-    super()
-    this.name = 'unban'
-    this.description = "mbpr project's Unban."
-    this.options = [
-      {
-        type: 'STRING',
-        name: 'id',
-        description: "The unban member's ID.",
-        required: true,
-      },
-    ]
-  }
-  execute(interaction) {
+  name = 'unban'
+  description = "mbpr project's Unban."
+  options: ApplicationCommandOptionData[] = [
+    {
+      type: 'STRING',
+      name: 'id',
+      description: "The unban member's ID.",
+      required: true,
+    },
+  ]
+
+  execute(interaction: CommandInteraction) {
     if (
-      !interaction.guild.members.cache
-        .get(interaction.user.id)
+      !interaction
+        .guild!.members!.cache!.get(interaction.user.id)!
         .permissions.has(Permissions.FLAGS.BAN_MEMBERS)
     )
       return interaction.reply({
         content: 'You not have permissions has `Ban Members`.',
         ephemeral: true,
       })
-    if (!interaction.guild.me.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
+    if (!interaction.guild!.me!.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
       return interaction.reply({
         content: "i'm not have permissions has `Ban Members`.",
         ephemeral: true,
       })
-    if (isNaN(interaction.options.getString('id')))
+    if (isNaN(interaction.options.getString('id') as unknown as number))
       return interaction.reply({
         content: '`id` is String.',
         ephemeral: true,
       })
-    interaction.guild.members
-      .unban(interaction.options.getString('id'))
+    interaction!
+      .guild!.members.unban(interaction.options.getString('id')!)
       .then(() => {
         interaction.reply({
           embeds: [
