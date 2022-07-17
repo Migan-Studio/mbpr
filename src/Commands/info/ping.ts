@@ -1,13 +1,17 @@
 import { Command } from '../../Client'
-import { MessageEmbed, Formatters, CommandInteraction } from 'discord.js'
+import {
+  EmbedBuilder,
+  Formatters,
+  ChatInputCommandInteraction,
+} from 'discord.js'
 
 export = class extends Command {
   name = 'ping'
   description = "mbpr project's Ping"
-  execute(interaction: CommandInteraction) {
+  execute(interaction: ChatInputCommandInteraction) {
     interaction.reply({
       embeds: [
-        new MessageEmbed()
+        new EmbedBuilder()
           .setAuthor({
             name: interaction.user.tag,
             iconURL: interaction.user.displayAvatarURL(),

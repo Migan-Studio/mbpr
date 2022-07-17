@@ -1,8 +1,10 @@
 import {
   ApplicationCommandOptionData,
-  CommandInteraction,
-  MessageEmbed,
-  Permissions,
+  ApplicationCommandOptionType,
+  ChannelType,
+  ChatInputCommandInteraction,
+  EmbedBuilder,
+  PermissionsBitField,
 } from 'discord.js'
 import { Command } from '../../Client'
 
@@ -11,7 +13,7 @@ export = class extends Command {
   description = 'Clean the chat room.'
   options: ApplicationCommandOptionData[] = [
     {
-      type: 'NUMBER',
+      type: ApplicationCommandOptionType.Number,
       name: 'limit',
       description: 'limit',
       required: true,
@@ -20,8 +22,8 @@ export = class extends Command {
     },
   ]
 
-  async execute(interaction: CommandInteraction) {
-    if (interaction.channel!.type === 'DM')
+  async execute(interaction: ChatInputCommandInteraction) {
+    if (interaction.channel!.type === ChannelType.DM)
       return interaction.reply({
         content: "Can't Using the DM.",
         ephemeral: true,
@@ -30,7 +32,8 @@ export = class extends Command {
       !interaction
         .guild!.members!.cache.get(interaction.user.id)!
         .permissions.has(
-          Permissions.FLAGS.MANAGE_MESSAGES || Permissions.FLAGS.ADMINISTRATOR
+          PermissionsBitField.Flags.ManageMessages ||
+            PermissionsBitField.Flags.Administrator
         )
     )
       return interaction.reply({
@@ -38,8 +41,9 @@ export = class extends Command {
         ephemeral: true,
       })
     if (
-      !interaction.guild!.me!.permissions.has(
-        Permissions.FLAGS.MANAGE_MESSAGES || Permissions.FLAGS.ADMINISTRATOR
+      !interaction.guild!.members.me!.permissions.has(
+        PermissionsBitField.Flags.ManageMessages ||
+          PermissionsBitField.Flags.Administrator
       )
     )
       return interaction.reply({
@@ -56,7 +60,7 @@ export = class extends Command {
           a.bulkDelete(messages, true)
           interaction.reply({
             embeds: [
-              new MessageEmbed()
+              new EmbedBuilder()
                 .setTitle('clean')
                 .setDescription(
                   `${interaction.options.getNumber(

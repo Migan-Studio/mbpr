@@ -1,9 +1,9 @@
 import {
   ApplicationCommandOptionData,
-  CommandInteraction,
-  MessageEmbed,
-  Permissions,
-  Snowflake,
+  ApplicationCommandOptionType,
+  ChatInputCommandInteraction,
+  EmbedBuilder,
+  PermissionsBitField,
 } from 'discord.js'
 import { Command } from '../../Client'
 
@@ -12,24 +12,28 @@ module.exports = class extends Command {
   description = "mbpr project's Unban."
   options: ApplicationCommandOptionData[] = [
     {
-      type: 'STRING',
+      type: ApplicationCommandOptionType.String,
       name: 'id',
       description: "The unban member's ID.",
       required: true,
     },
   ]
 
-  execute(interaction: CommandInteraction) {
+  execute(interaction: ChatInputCommandInteraction) {
     if (
       !interaction
         .guild!.members!.cache!.get(interaction.user.id)!
-        .permissions.has(Permissions.FLAGS.BAN_MEMBERS)
+        .permissions.has(PermissionsBitField.Flags.BanMembers)
     )
       return interaction.reply({
         content: 'You not have permissions has `Ban Members`.',
         ephemeral: true,
       })
-    if (!interaction.guild!.me!.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
+    if (
+      !interaction.guild!.members.me!.permissions.has(
+        PermissionsBitField.Flags.BanMembers
+      )
+    )
       return interaction.reply({
         content: "i'm not have permissions has `Ban Members`.",
         ephemeral: true,
@@ -44,7 +48,7 @@ module.exports = class extends Command {
       .then(() => {
         interaction.reply({
           embeds: [
-            new MessageEmbed()
+            new EmbedBuilder()
               .setTitle('unban')
               .setDescription('The member has been unbaned.')
               .setTimestamp(),

@@ -1,10 +1,12 @@
 import { Command } from '../../Client'
 import {
-  MessageEmbed,
-  Permissions,
-  CommandInteraction,
+  EmbedBuilder,
+  ChatInputCommandInteraction,
   ApplicationCommandOptionData,
   GuildMember,
+  ChannelType,
+  PermissionsBitField,
+  ApplicationCommandOptionType,
 } from 'discord.js'
 
 module.exports = class extends Command {
@@ -12,21 +14,21 @@ module.exports = class extends Command {
   description = "mbpr project's Kick"
   options: ApplicationCommandOptionData[] = [
     {
-      type: 'USER',
+      type: ApplicationCommandOptionType.User,
       name: 'member',
       description: 'member',
       required: true,
     },
     {
-      type: 'STRING',
+      type: ApplicationCommandOptionType.String,
       name: 'reason',
       description: 'kick reason',
       required: false,
     },
   ]
-  execute(interaction: CommandInteraction) {
+  execute(interaction: ChatInputCommandInteraction) {
     let member = interaction.options.getMember('member') as GuildMember
-    if (interaction.channel!.type === 'DM')
+    if (interaction.channel!.type === ChannelType.DM)
       return interaction.reply({
         content: "Can't Using the DM.",
         ephemeral: true,
@@ -34,13 +36,17 @@ module.exports = class extends Command {
     if (
       !interaction
         .guild!.members!.cache!.get(interaction.user.id)!
-        .permissions.has(Permissions.FLAGS.KICK_MEMBERS)
+        .permissions.has(PermissionsBitField.Flags.KickMembers)
     )
       return interaction.reply({
         content: 'You not have permissions has `Kick Members`.',
         ephemeral: true,
       })
-    if (!interaction.guild!.me!.permissions.has(Permissions.FLAGS.KICK_MEMBERS))
+    if (
+      !interaction.guild!.members.me!.permissions.has(
+        PermissionsBitField.Flags.KickMembers
+      )
+    )
       return interaction.reply({
         content: "i'm not have permissions has `Kick Members`.",
         ephemeral: true,
@@ -50,7 +56,7 @@ module.exports = class extends Command {
       member.kick(interaction.options.getString('reason') || 'None')
       interaction.reply({
         embeds: [
-          new MessageEmbed()
+          new EmbedBuilder()
             .setTitle('Kick')
             .setDescription(`Member ${member.user.tag} has been kicked.`)
             .setTimestamp(),
