@@ -1,7 +1,7 @@
 import { Command } from '../../Client'
 import {
   EmbedBuilder,
-  Formatters,
+  codeBlock,
   ChatInputCommandInteraction,
 } from 'discord.js'
 
@@ -17,9 +17,7 @@ export = class extends Command {
             iconURL: interaction.user.displayAvatarURL(),
           })
           .setTitle(`${interaction.client.user!.username}'s Latency`)
-          .setDescription(
-            Formatters.codeBlock('md', `${interaction.client.ws.ping}ms`)
-          ),
+          .setDescription(codeBlock('md', `${interaction.client.ws.ping}ms`)),
       ],
     })
   }
