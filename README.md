@@ -5,7 +5,8 @@
 ## Using
 
 - **this project is use licence at `MIT`**
-- **You need node.js 16.6.0 or higher and yarn**
+- **You need node.js 16.9.0 or higher and yarn**
+- **This is use by yarn berry.**
 
 1. Clone the project.
 2. run this command

@@ -5,7 +5,7 @@ import {
   EmbedBuilder,
   PermissionsBitField,
 } from 'discord.js'
-import { Command } from '../../Client'
+import { Command } from 'discommand'
 
 module.exports = class extends Command {
   name = 'unban'

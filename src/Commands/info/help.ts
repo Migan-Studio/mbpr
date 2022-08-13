@@ -1,6 +1,6 @@
-import { Command } from '../../Client'
+import { Command } from 'discommand'
 import {
-  Formatters,
+  codeBlock,
   ChatInputCommandInteraction,
   EmbedBuilder,
 } from 'discord.js'
@@ -14,8 +14,9 @@ export = class extends Command {
       embeds: [
         new EmbedBuilder()
           .setTitle(`${interaction.client.user!.username}'s Help`)
+          .setThumbnail(interaction.client.user!.displayAvatarURL())
           .setDescription(
-            Formatters.codeBlock(
+            codeBlock(
               'md',
               `# info
 - help
