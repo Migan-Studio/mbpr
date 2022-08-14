@@ -32,12 +32,12 @@ export class mbprClient extends DiscommandClient {
     console.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     console.info('@@ This project licence is MIT. @@')
     console.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-    console.warn('[Warning] You using preview version.')
     console.log(' ')
     config()
     this.login(process.env.TOKEN)
     this.once('ready', () => {
       console.log(`[MbprClient] Bot Name: ${this.user!.username}`)
+      console.warn('[Warning] You using preview version.')
       console.log('-------------------------')
     })
     this.loadAll()

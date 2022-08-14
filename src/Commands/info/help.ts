@@ -8,7 +8,6 @@ import {
 export = class extends Command {
   name = 'help'
   description = "mbpr project's Help"
-
   execute(interaction: ChatInputCommandInteraction) {
     interaction.reply({
       embeds: [
