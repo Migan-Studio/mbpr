@@ -35,7 +35,6 @@ export class mbprClient extends DiscommandClient {
     this.login(process.env.TOKEN)
     this.once('ready', () => {
       console.log(`[MbprClient] ${this.user!.username}`)
-      console.warn('[MbprClient] You using preview version.')
       console.log('-------------------------')
     })
     this.loadAll()
