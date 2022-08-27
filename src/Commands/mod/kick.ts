@@ -1,4 +1,4 @@
-import { Command } from 'discommand'
+import { Command } from 'mbpr-commandhandler'
 import {
   EmbedBuilder,
   ChatInputCommandInteraction,

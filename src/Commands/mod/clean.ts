@@ -6,7 +6,7 @@ import {
   EmbedBuilder,
   PermissionsBitField,
 } from 'discord.js'
-import { Command } from 'discommand'
+import { Command } from 'mbpr-commandhandler'
 
 export = class extends Command {
   name = 'clean'

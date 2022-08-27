@@ -1,30 +1,25 @@
-import { GatewayIntentBits } from 'discord.js'
+import { GatewayIntentBits, Client } from 'discord.js'
 import path from 'path'
 import { config } from 'dotenv'
-import { DiscommandClient } from 'discommand'
+import { CommandHandler, LoadType } from 'mbpr-commandhandler'
 
 declare module 'discord.js' {
   interface Client {
-    DiscommandClientOptions: {
-      loadType: 'FILE' | 'FOLDER'
-      CommandHandlerDirectory: string
-      ListenerDirectory?: string
-    }
+    cmd: CommandHandler
   }
 }
 
-export class mbprClient extends DiscommandClient {
+export class mbprClient extends Client {
   constructor() {
-    super(
-      {
-        intents: [GatewayIntentBits.Guilds],
-      },
-      {
-        loadType: 'FOLDER',
-        CommandHandlerDirectory: path.join(__dirname, '..', 'Commands'),
-      }
-    )
+    super({
+      intents: [GatewayIntentBits.Guilds],
+    })
   }
+
+  public cmd: CommandHandler = new CommandHandler(this, {
+    loadType: LoadType.Folder,
+    directory: path.join(__dirname, '..', 'Commands'),
+  })
 
   start() {
     console.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
@@ -37,6 +32,6 @@ export class mbprClient extends DiscommandClient {
       console.log(`[MbprClient] ${this.user!.username}`)
       console.log('-------------------------')
     })
-    this.loadAll()
+    this.cmd.loadAll()
   }
 }
