@@ -16,4 +16,16 @@ export default {
 - 차단해제`,
     },
   },
+  ping: {
+    name: '핑',
+    description: 'mbpr 프로젝트의 핑',
+    embeds: {
+      title(botName: string): string {
+        return `${botName}의 핑`
+      },
+      description(ping: number): string {
+        return `${ping}ms`
+      },
+    },
+  },
 }

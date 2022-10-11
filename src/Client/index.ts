@@ -1,5 +1,5 @@
 import { Client, GatewayIntentBits } from 'discord.js'
-import { CommandHandler, LoadType } from '../../modules/mbpr-commandhandler'
+import { CommandHandler, LoadType } from '../../modules/CommandHandler'
 import path from 'path'
 import { config } from 'dotenv'
 
@@ -23,14 +23,14 @@ export class MbprClient extends Client {
   public start(): void {
     config()
     this.login(process.env.TOKEN)
-    this.cmd.loadAll()
     console.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     console.info('@@ THIS IS USE LICENCE IS MIT. @@')
     console.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     console.log(' ')
+    this.cmd.loadAll()
     this.once('ready', () => {
       console.log(`[MbprClient] Bot name: ${this.user!.username}`)
-      console.warn('[MbprClient] You using preview version.')
+      console.warn('[MbprClient] You using alpha version.')
       console.log('-------------------------')
     })
   }

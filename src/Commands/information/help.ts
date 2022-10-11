@@ -1,4 +1,4 @@
-import { Command } from '../../../modules/mbpr-commandhandler'
+import { Command } from '../../../modules/CommandHandler'
 import {
   CacheType,
   ChatInputCommandInteraction,
