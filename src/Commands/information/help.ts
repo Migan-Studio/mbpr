@@ -6,14 +6,14 @@ import {
   EmbedBuilder,
   Locale,
 } from 'discord.js'
-import { korean } from '../../localization'
+import { englishUS, korean } from '../../localization'
 
 export default class HelpCommands extends Command {
   constructor() {
     super()
-    this.name = 'help'
+    this.name = englishUS.help.name
     this.nameLocalizations = { ko: korean.help.name }
-    this.description = "mbpr project's help"
+    this.description = englishUS.help.description
     this.descriptionLocalizations = { ko: korean.help.description }
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>): void {
@@ -33,20 +33,10 @@ export default class HelpCommands extends Command {
       interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setTitle(`${interaction.client.user!.username}'s Help`)
-            .setDescription(
-              codeBlock(
-                'md',
-                `# Information
-- help
-
-# Moderator
-- kick
-- ban
-- clean
-- unban`
-              )
+            .setTitle(
+              englishUS.help.embeds.title(interaction.client.user!.username)
             )
+            .setDescription(codeBlock('md', englishUS.help.embeds.description))
             .setTimestamp()
             .setThumbnail(interaction.client.user!.displayAvatarURL()),
         ],

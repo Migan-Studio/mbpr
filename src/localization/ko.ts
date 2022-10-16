@@ -28,4 +28,24 @@ export default {
       },
     },
   },
+  kick: {
+    name: '추방',
+    description: 'mbpr 프로젝트의 추방',
+    options: [
+      {
+        name: '멤버',
+        description: '추방할 멤버',
+      },
+      {
+        name: '사유',
+        description: '추방할 사유',
+      },
+    ],
+    embeds: {
+      title: '추방',
+      description(kickedMemberName: string): string {
+        return `멤버 ${kickedMemberName}을/를 추방했어요.`
+      },
+    },
+  },
 }

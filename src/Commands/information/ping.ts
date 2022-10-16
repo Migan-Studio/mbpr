@@ -6,14 +6,14 @@ import {
   EmbedBuilder,
   Locale,
 } from 'discord.js'
-import { korean } from '../../localization'
+import { englishUS, korean } from '../../localization'
 
 export default class PingCommands extends Command {
   public constructor() {
     super()
-    this.name = 'ping'
+    this.name = englishUS.ping.name
     this.nameLocalizations = { ko: korean.ping.name }
-    this.description = "mbpr project's ping"
+    this.description = englishUS.ping.description
     this.descriptionLocalizations = { ko: korean.ping.description }
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>): void {
@@ -37,8 +37,15 @@ export default class PingCommands extends Command {
       interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setTitle(`${interaction.client.user!.username}'s ping`)
-            .setDescription(codeBlock('md', `${interaction.client.ws.ping}ms`))
+            .setTitle(
+              englishUS.ping.embeds.title(interaction.client.user!.username)
+            )
+            .setDescription(
+              codeBlock(
+                'md',
+                englishUS.ping.embeds.description(interaction.client.ws.ping)
+              )
+            )
             .setTimestamp(),
         ],
       })
