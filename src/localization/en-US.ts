@@ -32,7 +32,6 @@ export default {
   kick: {
     name: 'kick',
     description: "mbpr project's kick",
-    ifDMReply: "❌ Can't Using the DM. :(",
     options: [
       {
         name: 'member',
@@ -43,5 +42,12 @@ export default {
         description: 'a reason to kick',
       },
     ],
+
+    embeds: {
+      title: 'kick',
+      description(kickedMemberName: string): string {
+        return `Member ${kickedMemberName} has been kicked.`
+      },
+    },
   },
 }

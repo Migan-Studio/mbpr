@@ -1,4 +1,4 @@
-import { Command } from '../../../modules/CommandHandler'
+import { Command } from '../../../modules/CommandHandler/src'
 import {
   CacheType,
   ChatInputCommandInteraction,

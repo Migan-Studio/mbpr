@@ -1,4 +1,4 @@
-import { Command } from '../../../modules/CommandHandler'
+import { Command } from '../../../modules/CommandHandler/src'
 import {
   ChatInputCommandInteraction,
   CacheType,
@@ -76,6 +76,42 @@ export default class KickCommands extends Command {
         console.error(error)
       }
     } else {
+      if (interaction.channel?.type === ChannelType.DM)
+        interaction.reply({
+          content: ifDM(Locale.EnglishUS),
+        })
+
+      if (
+        !interaction.guild?.members.cache
+          .get(interaction.user.id)
+          ?.permissions.has(PermissionsBitField.Flags.KickMembers)
+      )
+        interaction.reply(
+          ifNonePermissions(Locale.EnglishUS, 'Kick Members', false)
+        )
+      if (
+        !interaction.guild!.members.me!.permissions.has(
+          PermissionsBitField.Flags.KickMembers
+        )
+      )
+        interaction.reply(
+          ifNonePermissions(Locale.EnglishUS, 'Kick Members', true)
+        )
+
+      try {
+        member.kick(reason || 'None')
+        interaction.reply({
+          embeds: [
+            embed
+              .setTitle(englishUS.kick.embeds.title)
+              .setDescription(
+                englishUS.kick.embeds.description(member.user.tag)
+              ),
+          ],
+        })
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 }

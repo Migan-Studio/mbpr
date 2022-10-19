@@ -1,5 +1,5 @@
 import { Client, GatewayIntentBits } from 'discord.js'
-import { CommandHandler, LoadType } from '../../modules/CommandHandler'
+import { CommandHandler, LoadType } from '../../modules/CommandHandler/src'
 import path from 'path'
 import { config } from 'dotenv'
 
