@@ -48,4 +48,24 @@ export default {
       },
     },
   },
+  ban: {
+    name: '차단',
+    description: 'mbpr 프로젝트의 차단',
+    options: [
+      {
+        name: '멤버',
+        description: '차단할 멤버',
+      },
+      {
+        name: '사유',
+        description: '차단할 사유',
+      },
+    ],
+    embeds: {
+      title: '차단',
+      description(kickedMemberName: string): string {
+        return `멤버 ${kickedMemberName}을/를 차단했어요.`
+      },
+    },
+  },
 }

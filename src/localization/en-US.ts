@@ -42,11 +42,30 @@ export default {
         description: 'a reason to kick',
       },
     ],
-
     embeds: {
       title: 'kick',
       description(kickedMemberName: string): string {
         return `Member ${kickedMemberName} has been kicked.`
+      },
+    },
+  },
+  ban: {
+    name: 'ban',
+    description: "mbpr project's ban",
+    options: [
+      {
+        name: 'member',
+        description: 'Member to ban',
+      },
+      {
+        name: 'reason',
+        description: 'a reason to ban',
+      },
+    ],
+    embeds: {
+      title: 'ban',
+      description(kickedMemberName: string): string {
+        return `Member ${kickedMemberName} has been banned.`
       },
     },
   },

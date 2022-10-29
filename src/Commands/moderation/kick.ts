@@ -36,7 +36,7 @@ export default class KickCommands extends Command {
       },
     ]
   }
-  execute(interaction: ChatInputCommandInteraction<CacheType>): void {
+  execute(interaction: ChatInputCommandInteraction<CacheType>) {
     const member = interaction.options.getMember('member') as GuildMember
     const reason = interaction.options.getString('reason')
     const embed = new EmbedBuilder().setTimestamp()
@@ -44,24 +44,27 @@ export default class KickCommands extends Command {
       if (interaction.channel?.type === ChannelType.DM)
         interaction.reply({
           content: ifDM(Locale.Korean),
+          ephemeral: true,
         })
 
       if (
-        !interaction.guild?.members.cache
-          .get(interaction.user.id)
-          ?.permissions.has(PermissionsBitField.Flags.KickMembers)
+        !interaction
+          .guild!.members!.cache!.get(interaction.user.id)!
+          .permissions.has(PermissionsBitField.Flags.KickMembers)
       )
-        interaction.reply(
-          ifNonePermissions(Locale.Korean, '멤버 추방하기', false)
-        )
+        return interaction.reply({
+          content: ifNonePermissions(Locale.Korean, '멤버 추방하기', false),
+          ephemeral: true,
+        })
       if (
         !interaction.guild!.members.me!.permissions.has(
           PermissionsBitField.Flags.KickMembers
         )
       )
-        interaction.reply(
-          ifNonePermissions(Locale.Korean, '멤버 추방하기', true)
-        )
+        return interaction.reply({
+          content: ifNonePermissions(Locale.Korean, '멤버 추방하기', true),
+          ephemeral: true,
+        })
 
       try {
         member.kick(reason || 'None')
@@ -71,6 +74,7 @@ export default class KickCommands extends Command {
               .setTitle(korean.kick.embeds.title)
               .setDescription(korean.kick.embeds.description(member.user.tag)),
           ],
+          ephemeral: true,
         })
       } catch (error) {
         console.error(error)
@@ -79,24 +83,27 @@ export default class KickCommands extends Command {
       if (interaction.channel?.type === ChannelType.DM)
         interaction.reply({
           content: ifDM(Locale.EnglishUS),
+          ephemeral: true,
         })
 
       if (
-        !interaction.guild?.members.cache
-          .get(interaction.user.id)
-          ?.permissions.has(PermissionsBitField.Flags.KickMembers)
+        !interaction
+          .guild!.members!.cache!.get(interaction.user.id)!
+          .permissions.has(PermissionsBitField.Flags.KickMembers)
       )
-        interaction.reply(
-          ifNonePermissions(Locale.EnglishUS, 'Kick Members', false)
-        )
+        return interaction.reply({
+          content: ifNonePermissions(Locale.EnglishUS, 'Kick Members', false),
+          ephemeral: true,
+        })
       if (
         !interaction.guild!.members.me!.permissions.has(
           PermissionsBitField.Flags.KickMembers
         )
       )
-        interaction.reply(
-          ifNonePermissions(Locale.EnglishUS, 'Kick Members', true)
-        )
+        return interaction.reply({
+          content: ifNonePermissions(Locale.EnglishUS, 'Kick Members', true),
+          ephemeral: true,
+        })
 
       try {
         member.kick(reason || 'None')
@@ -108,6 +115,7 @@ export default class KickCommands extends Command {
                 englishUS.kick.embeds.description(member.user.tag)
               ),
           ],
+          ephemeral: true,
         })
       } catch (error) {
         console.error(error)
