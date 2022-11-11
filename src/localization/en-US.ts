@@ -69,4 +69,20 @@ export default {
       },
     },
   },
+  clean: {
+    name: 'clean',
+    description: "mpbr project's clean",
+    options: [
+      {
+        name: 'clean-limit',
+        description: "clean chat's limit",
+      },
+    ],
+    embeds: {
+      title: 'clean',
+      description(count: number): string {
+        return `${count} chat(s) have been deleted.`
+      },
+    },
+  },
 }

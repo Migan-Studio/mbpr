@@ -68,4 +68,20 @@ export default {
       },
     },
   },
+  clean: {
+    name: '채팅청소',
+    description: 'mbpr 프로젝트의 채팅청소',
+    options: [
+      {
+        name: '청소-제한',
+        description: '청소할 채팅의 갯수',
+      },
+    ],
+    embeds: {
+      title: '채팅청소',
+      description(count: number): string {
+        return `${count}개의 채팅을 청소했어요.`
+      },
+    },
+  },
 }
