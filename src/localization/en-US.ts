@@ -85,4 +85,19 @@ export default {
       },
     },
   },
+  unban: {
+    name: 'unban',
+    description: "mbpr project's unban",
+    options: [
+      {
+        name: 'memberid',
+        description: "the unban member's ID",
+      },
+    ],
+    IDIsNaN: "The value `memberid` is the member's ID.",
+    embeds: {
+      title: 'unban',
+      description: 'The member has been unbaned.',
+    },
+  },
 }

@@ -1,7 +1,7 @@
 {
   "name": "mpbr",
   "private": true,
-  "version": "6.0.0-rewrite.2",
+  "version": "6.0.0-dev.0",
   "main": "dist/index.js",
   "license": "MIT",
   "dependencies": {
@@ -20,5 +20,5 @@
     "build": "tsc",
     "dev": "nodemon --exec ts-node src --ext ts"
   },
-  "packageManager": "yarn@3.2.2"
+  "packageManager": "yarn@3.2.4"
 }

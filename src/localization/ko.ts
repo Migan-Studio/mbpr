@@ -84,4 +84,19 @@ export default {
       },
     },
   },
+  unban: {
+    name: '차단해제',
+    description: 'mbpr 프로젝트의 차단 해제',
+    options: [
+      {
+        name: '멤버id',
+        description: '차단 해제할 멤버의 ID',
+      },
+    ],
+    IDIsNaN: '값 `멤버id`는 멤버의 ID입니다.',
+    embeds: {
+      title: '차단 해제',
+      description: '해당 멤버를 차단해제 했어요.',
+    },
+  },
 }

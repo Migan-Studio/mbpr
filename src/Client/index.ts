@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits } from 'discord.js'
+import { Client, GatewayIntentBits, Partials } from 'discord.js'
 import { CommandHandler, LoadType } from '../../modules/CommandHandler/src'
 import path from 'path'
 import { config } from 'dotenv'
@@ -12,7 +12,7 @@ declare module 'discord.js' {
 
 export class MbprClient extends Client {
   public constructor() {
-    super({ intents: [GatewayIntentBits.Guilds] })
+    super({ intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel] })
   }
 
   public cmd: CommandHandler = new CommandHandler(this, {
@@ -30,7 +30,7 @@ export class MbprClient extends Client {
     this.cmd.loadAll()
     this.once('ready', () => {
       console.log(`[MbprClient] Bot name: ${this.user!.username}`)
-      console.warn('[MbprClient] You using alpha version.')
+      console.warn('[MbprClient] You using preview aversion.')
       console.log('-------------------------')
     })
   }
