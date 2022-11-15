@@ -1,19 +1,18 @@
-import { GatewayIntentBits, Client } from 'discord.js'
+import { Client, GatewayIntentBits, Partials } from 'discord.js'
+import { CommandHandler, LoadType } from '../../modules/CommandHandler/src'
 import path from 'path'
 import { config } from 'dotenv'
-import { CommandHandler, LoadType } from 'mbpr-commandhandler'
 
 declare module 'discord.js' {
   interface Client {
     cmd: CommandHandler
+    start(): void
   }
 }
 
-export class mbprClient extends Client {
-  constructor() {
-    super({
-      intents: [GatewayIntentBits.Guilds],
-    })
+export class MbprClient extends Client {
+  public constructor() {
+    super({ intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel] })
   }
 
   public cmd: CommandHandler = new CommandHandler(this, {
@@ -21,17 +20,17 @@ export class mbprClient extends Client {
     directory: path.join(__dirname, '..', 'Commands'),
   })
 
-  start() {
+  public start(): void {
+    config()
+    this.login(process.env.TOKEN)
     console.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     console.info('@@ THIS IS USE LICENCE IS MIT. @@')
     console.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     console.log(' ')
-    config()
-    this.login(process.env.TOKEN)
+    this.cmd.loadAll()
     this.once('ready', () => {
-      console.log(`[MbprClient] ${this.user!.username}`)
+      console.log(`[MbprClient] Bot name: ${this.user!.username}`)
       console.log('-------------------------')
     })
-    this.cmd.loadAll()
   }
 }

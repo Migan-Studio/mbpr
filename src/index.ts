@@ -1,3 +1,3 @@
-import { mbprClient } from './Client'
+import { MbprClient } from './Client'
 
-new mbprClient().start()
+new MbprClient().start()
