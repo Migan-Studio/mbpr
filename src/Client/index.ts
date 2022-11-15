@@ -30,7 +30,6 @@ export class MbprClient extends Client {
     this.cmd.loadAll()
     this.once('ready', () => {
       console.log(`[MbprClient] Bot name: ${this.user!.username}`)
-      console.warn('[MbprClient] You using preview aversion.')
       console.log('-------------------------')
     })
   }
