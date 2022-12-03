@@ -1,4 +1,4 @@
-import { Command } from '../../../modules/CommandHandler/src'
+import { Command } from 'mbpr-rodule'
 import {
   ApplicationCommandOptionType,
   CacheType,

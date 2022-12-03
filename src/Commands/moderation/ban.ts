@@ -1,4 +1,4 @@
-import { Command } from '../../../modules/CommandHandler/src'
+import { Command } from 'mbpr-rodule'
 import { englishUS, korean, ifDM, ifNonePermissions } from '../../localization'
 import {
   ApplicationCommandOptionType,
