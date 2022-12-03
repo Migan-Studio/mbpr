@@ -1,3 +1,17 @@
-import { MbprClient } from './Client'
+import { GatewayIntentBits, Partials } from 'discord.js'
+import { Mbpr } from 'mbpr-rodule'
+import path from 'path'
+import { config } from 'dotenv'
 
-new MbprClient().start()
+config()
+new Mbpr(
+  {
+    intents: [GatewayIntentBits.Guilds],
+    partials: [Partials.Channel],
+  },
+  {
+    defaultHelpCommand: true,
+    commandFolderLoadDir: path.join(__dirname, 'Commands'),
+    token: process.env.TOKEN!,
+  }
+).start()
