@@ -7,7 +7,7 @@
   "dependencies": {
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.1",
-    "mbpr-rodule": "^7.0.0"
+    "mbpr-rodule": "^7.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.7.3",

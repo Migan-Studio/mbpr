@@ -885,10 +885,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mbpr-rodule@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "mbpr-rodule@npm:7.0.0"
-  checksum: 9c5b09461e0a36184cb97127aae973dd8093f5ed223793fe2d776622d26d9d971e2d403116ad047b8810896d6df2327e56eb4ca3f26f1c2c6b202af916d9a4e4
+"mbpr-rodule@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "mbpr-rodule@npm:7.0.1"
+  checksum: 001f2392e82e62ef21a01ff14c38bfe8deaec831470d8e5e4cc325748d52d966bffc2613864d5a2cee984591cfbcbdc711e678d9caac582ba4c4b744534493b2
   languageName: node
   linkType: hard
 
@@ -996,7 +996,7 @@ __metadata:
     "@types/node": ^18.7.3
     discord.js: ^14.7.1
     dotenv: ^16.0.1
-    mbpr-rodule: ^7.0.0
+    mbpr-rodule: ^7.0.1
     nodemon: ^2.0.20
     prettier: ^2.7.1
     ts-node: ^10.9.1
