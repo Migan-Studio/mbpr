@@ -10,11 +10,13 @@ import { englishUS, korean } from '../../localization'
 
 export default class PingCommands extends Command {
   public constructor() {
-    super()
-    this.name = englishUS.ping.name
-    this.nameLocalizations = { ko: korean.ping.name }
-    this.description = englishUS.ping.description
-    this.descriptionLocalizations = { ko: korean.ping.description }
+    super('ping')
+    this.data = {
+      name: englishUS.ping.name,
+      nameLocalizations: { ko: korean.ping.name },
+      description: englishUS.ping.description,
+      descriptionLocalizations: { ko: korean.ping.description },
+    }
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>): void {
     if (interaction.locale === Locale.Korean)

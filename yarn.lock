@@ -89,6 +89,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@migan/prettier-config@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@migan/prettier-config@npm:1.0.0"
+  peerDependencies:
+    prettier: ^2.7.1
+  checksum: fc4d797be4255801db6a5e6a2977a0d0f70df21040e65fa4a363adcbf92373feb5efc462cd04c41fa82647c7884882832c5852868bef9669aa894eeb9e880d7a
+  languageName: node
+  linkType: hard
+
 "@npmcli/fs@npm:^2.1.0":
   version: 2.1.2
   resolution: "@npmcli/fs@npm:2.1.2"
@@ -251,6 +260,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ansi-styles@npm:^4.1.0":
+  version: 4.3.0
+  resolution: "ansi-styles@npm:4.3.0"
+  dependencies:
+    color-convert: ^2.0.1
+  checksum: 513b44c3b2105dd14cc42a19271e80f386466c4be574bccf60b627432f9198571ebf4ab1e4c3ba17347658f4ee1711c163d574248c0c1cdc2d5917a0ad582ec4
+  languageName: node
+  linkType: hard
+
 "anymatch@npm:~3.1.2":
   version: 3.1.2
   resolution: "anymatch@npm:3.1.2"
@@ -362,6 +380,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chalk@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "chalk@npm:4.1.2"
+  dependencies:
+    ansi-styles: ^4.1.0
+    supports-color: ^7.1.0
+  checksum: fe75c9d5c76a7a98d45495b91b2172fa3b7a09e0cc9370e5c8feb1c567b85c4288e2b3fded7cfdd7359ac28d6b3844feb8b82b8686842e93d23c827c417e83fc
+  languageName: node
+  linkType: hard
+
 "chokidar@npm:^3.5.2":
   version: 3.5.3
   resolution: "chokidar@npm:3.5.3"
@@ -392,6 +420,22 @@ __metadata:
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
   checksum: 2ac8cd2b2f5ec986a3c743935ec85b07bc174d5421a5efc8017e1f146a1cf5f781ae962618f416352103b32c9cd7e203276e8c28241bbe946160cab16149fb68
+  languageName: node
+  linkType: hard
+
+"color-convert@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "color-convert@npm:2.0.1"
+  dependencies:
+    color-name: ~1.1.4
+  checksum: 79e6bdb9fd479a205c71d89574fccfb22bd9053bd98c6c4d870d65c132e5e904e6034978e55b43d69fcaa7433af2016ee203ce76eeba9cfa554b373e7f7db336
+  languageName: node
+  linkType: hard
+
+"color-name@npm:~1.1.4":
+  version: 1.1.4
+  resolution: "color-name@npm:1.1.4"
+  checksum: b0445859521eb4021cd0fb0cc1a75cecf67fceecae89b63f62b201cca8d345baf8b952c966862a9d9a2632987d4f6581f0ec8d957dfacece86f0a7919316f610
   languageName: node
   linkType: hard
 
@@ -464,6 +508,13 @@ __metadata:
   version: 4.0.2
   resolution: "diff@npm:4.0.2"
   checksum: f2c09b0ce4e6b301c221addd83bf3f454c0bc00caa3dd837cf6c127d6edf7223aa2bbe3b688feea110b7f262adbfc845b757c44c8a9f8c0c5b15d8fa9ce9d20d
+  languageName: node
+  linkType: hard
+
+"discommand@npm:^11.0.1":
+  version: 11.0.1
+  resolution: "discommand@npm:11.0.1"
+  checksum: 16fa367af17770b8760930284620e38c16554f93cc4c97c3e957f50d120649262499e0bc0f8232dac1e9c519f35f229367e21b377e748e7d65b75d9ea6b9e37b
   languageName: node
   linkType: hard
 
@@ -656,6 +707,13 @@ __metadata:
   version: 3.0.0
   resolution: "has-flag@npm:3.0.0"
   checksum: 4a15638b454bf086c8148979aae044dd6e39d63904cd452d970374fa6a87623423da485dfb814e7be882e05c096a7ccf1ebd48e7e7501d0208d8384ff4dea73b
+  languageName: node
+  linkType: hard
+
+"has-flag@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "has-flag@npm:4.0.0"
+  checksum: 261a1357037ead75e338156b1f9452c016a37dcd3283a972a30d9e4a87441ba372c8b81f818cd0fbcd9c0354b4ae7e18b9e1afa1971164aef6d18c2b6095a8ad
   languageName: node
   linkType: hard
 
@@ -885,10 +943,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mbpr-rodule@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "mbpr-rodule@npm:7.0.1"
-  checksum: 001f2392e82e62ef21a01ff14c38bfe8deaec831470d8e5e4cc325748d52d966bffc2613864d5a2cee984591cfbcbdc711e678d9caac582ba4c4b744534493b2
+"mbpr-rodule@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "mbpr-rodule@npm:8.0.0"
+  dependencies:
+    chalk: ^4.1.2
+    discommand: ^11.0.1
+  checksum: 39bc590942a2c524f5ec097c5592e6fbab1631c8bd3fe4b566e3b157400757d3b8650a25d64ab6a6c2070094409aa6cbefdc4eec4414bce8c5b66643e000ec5a
   languageName: node
   linkType: hard
 
@@ -993,10 +1054,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mpbr@workspace:."
   dependencies:
+    "@migan/prettier-config": ^1.0.0
     "@types/node": ^18.7.3
     discord.js: ^14.7.1
     dotenv: ^16.0.1
-    mbpr-rodule: ^7.0.1
+    mbpr-rodule: ^8.0.0
     nodemon: ^2.0.20
     prettier: ^2.7.1
     ts-node: ^10.9.1
@@ -1380,6 +1442,15 @@ __metadata:
   dependencies:
     has-flag: ^3.0.0
   checksum: 95f6f4ba5afdf92f495b5a912d4abee8dcba766ae719b975c56c084f5004845f6f5a5f7769f52d53f40e21952a6d87411bafe34af4a01e65f9926002e38e1dac
+  languageName: node
+  linkType: hard
+
+"supports-color@npm:^7.1.0":
+  version: 7.2.0
+  resolution: "supports-color@npm:7.2.0"
+  dependencies:
+    has-flag: ^4.0.0
+  checksum: 3dda818de06ebbe5b9653e07842d9479f3555ebc77e9a0280caf5a14fb877ffee9ed57007c3b78f5a6324b8dbeec648d9e97a24e2ed9fdb81ddc69ea07100f4a
   languageName: node
   linkType: hard
 

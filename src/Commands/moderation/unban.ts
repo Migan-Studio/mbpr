@@ -12,21 +12,23 @@ import { englishUS, ifDM, ifNonePermissions, korean } from '../../localization'
 
 export default class UnbanCommands extends Command {
   public constructor() {
-    super()
-    this.name = englishUS.unban.name
-    this.nameLocalizations = { ko: korean.unban.name }
-    this.description = englishUS.unban.description
-    this.descriptionLocalizations = { ko: korean.unban.description }
-    this.options = [
-      {
-        type: ApplicationCommandOptionType.String,
-        name: englishUS.unban.options[0].name,
-        nameLocalizations: { ko: korean.unban.options[0].name },
-        description: englishUS.unban.options[0].description,
-        descriptionLocalizations: { ko: korean.unban.options[0].description },
-        required: true,
-      },
-    ]
+    super('unban')
+    this.data = {
+      name: englishUS.unban.name,
+      nameLocalizations: { ko: korean.unban.name },
+      description: englishUS.unban.description,
+      descriptionLocalizations: { ko: korean.unban.description },
+      options: [
+        {
+          type: ApplicationCommandOptionType.String,
+          name: englishUS.unban.options[0].name,
+          nameLocalizations: { ko: korean.unban.options[0].name },
+          description: englishUS.unban.options[0].description,
+          descriptionLocalizations: { ko: korean.unban.options[0].description },
+          required: true,
+        },
+      ],
+    }
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>) {
     const embed = new EmbedBuilder().setTimestamp()

@@ -12,23 +12,25 @@ import { englishUS, ifDM, ifNonePermissions, korean } from '../../localization'
 
 export default class CleanCommands extends Command {
   public constructor() {
-    super()
-    this.name = englishUS.clean.name
-    this.nameLocalizations = { ko: korean.clean.name }
-    this.description = englishUS.clean.description
-    this.descriptionLocalizations = { ko: korean.clean.description }
-    this.options = [
-      {
-        type: ApplicationCommandOptionType.Number,
-        name: englishUS.clean.options[0].name,
-        nameLocalizations: { ko: korean.clean.options[0].name },
-        description: englishUS.clean.options[0].description,
-        descriptionLocalizations: { ko: korean.clean.options[0].description },
-        minValue: 1,
-        maxValue: 100,
-        required: true,
-      },
-    ]
+    super('clean')
+    this.data = {
+      name: englishUS.clean.name,
+      nameLocalizations: { ko: korean.clean.name },
+      description: englishUS.clean.description,
+      descriptionLocalizations: { ko: korean.clean.description },
+      options: [
+        {
+          type: ApplicationCommandOptionType.Number,
+          name: englishUS.clean.options[0].name,
+          nameLocalizations: { ko: korean.clean.options[0].name },
+          description: englishUS.clean.options[0].description,
+          descriptionLocalizations: { ko: korean.clean.options[0].description },
+          minValue: 1,
+          maxValue: 100,
+          required: true,
+        },
+      ],
+    }
   }
   async execute(interaction: ChatInputCommandInteraction<CacheType>) {
     const limit = interaction.options.getNumber('clean-limit')!

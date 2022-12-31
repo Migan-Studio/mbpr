@@ -11,7 +11,9 @@ new Mbpr(
   },
   {
     defaultHelpCommand: true,
-    commandFolderLoadDir: path.join(__dirname, 'Commands'),
+    directory: {
+      command: path.join(__dirname, 'Commands'),
+    },
     token: process.env.TOKEN!,
   }
 ).start()
