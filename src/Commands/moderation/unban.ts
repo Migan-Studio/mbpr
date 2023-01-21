@@ -8,12 +8,16 @@ import {
   Locale,
   PermissionsBitField,
 } from 'discord.js'
-import { englishUS, ifDM, ifNonePermissions, korean } from '../../localization'
+import {
+  englishUS,
+  ifDM,
+  ifNonePermissions,
+  korean,
+} from '../../localization/index.js'
 
 export default class UnbanCommands extends Command {
   public constructor() {
-    super('unban')
-    this.data = {
+    super({
       name: englishUS.unban.name,
       nameLocalizations: { ko: korean.unban.name },
       description: englishUS.unban.description,
@@ -28,7 +32,7 @@ export default class UnbanCommands extends Command {
           required: true,
         },
       ],
-    }
+    })
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>) {
     const embed = new EmbedBuilder().setTimestamp()

@@ -6,17 +6,16 @@ import {
   EmbedBuilder,
   Locale,
 } from 'discord.js'
-import { englishUS, korean } from '../../localization'
+import { englishUS, korean } from '../../localization/index.js'
 
 export default class PingCommands extends Command {
   public constructor() {
-    super('ping')
-    this.data = {
+    super({
       name: englishUS.ping.name,
       nameLocalizations: { ko: korean.ping.name },
       description: englishUS.ping.description,
       descriptionLocalizations: { ko: korean.ping.description },
-    }
+    })
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>): void {
     if (interaction.locale === Locale.Korean)

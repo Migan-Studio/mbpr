@@ -9,12 +9,16 @@ import {
   GuildMember,
   EmbedBuilder,
 } from 'discord.js'
-import { englishUS, ifDM, ifNonePermissions, korean } from '../../localization'
+import {
+  englishUS,
+  ifDM,
+  ifNonePermissions,
+  korean,
+} from '../../localization/index.js'
 
 export default class KickCommands extends Command {
   public constructor() {
-    super('kick')
-    this.data = {
+    super({
       name: englishUS.kick.name,
       nameLocalizations: { ko: korean.kick.name },
       description: englishUS.kick.description,
@@ -36,7 +40,7 @@ export default class KickCommands extends Command {
           descriptionLocalizations: { ko: korean.kick.options[1].description },
         },
       ],
-    }
+    })
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>) {
     const member = interaction.options.getMember('member') as GuildMember

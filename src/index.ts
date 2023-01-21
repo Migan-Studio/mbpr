@@ -1,9 +1,9 @@
 import { GatewayIntentBits, Partials } from 'discord.js'
 import { Mbpr } from 'mbpr-rodule'
-import path from 'path'
-import { config } from 'dotenv'
+import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import 'dotenv/config.js'
 
-config()
 new Mbpr(
   {
     intents: [GatewayIntentBits.Guilds],
@@ -12,7 +12,7 @@ new Mbpr(
   {
     defaultHelpCommand: true,
     directory: {
-      command: path.join(__dirname, 'Commands'),
+      command: join(dirname(fileURLToPath(import.meta.url)), 'Commands'),
     },
     token: process.env.TOKEN!,
   }

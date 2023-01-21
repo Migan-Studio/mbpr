@@ -1,5 +1,10 @@
 import { Command } from 'mbpr-rodule'
-import { englishUS, korean, ifDM, ifNonePermissions } from '../../localization'
+import {
+  englishUS,
+  korean,
+  ifDM,
+  ifNonePermissions,
+} from '../../localization/index.js'
 import {
   ApplicationCommandOptionType,
   CacheType,
@@ -13,8 +18,7 @@ import {
 
 export default class BanCommands extends Command {
   public constructor() {
-    super('ban')
-    this.data = {
+    super({
       name: englishUS.ban.name,
       nameLocalizations: { ko: korean.ban.name },
       description: englishUS.ban.description,
@@ -37,7 +41,7 @@ export default class BanCommands extends Command {
           required: false,
         },
       ],
-    }
+    })
   }
   execute(interaction: ChatInputCommandInteraction<CacheType>) {
     const member = interaction.options.getMember('member') as GuildMember

@@ -1,5 +1,5 @@
-import korean from './ko'
-import englishUS from './en-US'
+import korean from './ko.js'
+import englishUS from './en-US.js'
 import { Locale } from 'discord.js'
 
 function ifNonePermissions(

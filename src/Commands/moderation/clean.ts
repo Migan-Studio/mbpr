@@ -8,12 +8,16 @@ import {
   Locale,
   PermissionsBitField,
 } from 'discord.js'
-import { englishUS, ifDM, ifNonePermissions, korean } from '../../localization'
+import {
+  englishUS,
+  ifDM,
+  ifNonePermissions,
+  korean,
+} from '../../localization/index.js'
 
 export default class CleanCommands extends Command {
   public constructor() {
-    super('clean')
-    this.data = {
+    super({
       name: englishUS.clean.name,
       nameLocalizations: { ko: korean.clean.name },
       description: englishUS.clean.description,
@@ -30,7 +34,7 @@ export default class CleanCommands extends Command {
           required: true,
         },
       ],
-    }
+    })
   }
   async execute(interaction: ChatInputCommandInteraction<CacheType>) {
     const limit = interaction.options.getNumber('clean-limit')!
